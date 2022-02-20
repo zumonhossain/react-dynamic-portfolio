@@ -1,5 +1,9 @@
 <?php
 
+$router->get('/', function(){
+    return "<h1>Rest Site API</h1>";
+});
+
 $router->get('/ChartData', ['middleware'=>'auth','uses'=>'ChartDataController@onAllSelect']);
 
 $router->get('/ClientReview', ['middleware'=>'auth','uses'=>'ClientReviewController@onAllSelect']);
@@ -20,7 +24,7 @@ $router->get('/Services', ['middleware'=>'auth','uses'=>'ServiceController@onSel
 
 $router->get('/Project', ['middleware'=>'auth','uses'=>'ProjectController@onSelect3']);
 $router->get('/ProjectAll', ['middleware'=>'auth','uses'=>'ProjectController@onSelectAll']);
-$router->post('/ProjectDetails', ['middleware'=>'auth','uses'=>'ProjectController@onSelectDetail']);
+$router->get('/ProjectDetails/{projectID}', ['middleware'=>'auth','uses'=>'ProjectController@onSelectDetail']);
 
 $router->get('/VideoHome', ['middleware'=>'auth','uses'=>'HomeEtcController@onSelectVideo']);
 $router->get('/TotalProjectClient', ['middleware'=>'auth','uses'=>'HomeEtcController@onSelectProjectClient']);
